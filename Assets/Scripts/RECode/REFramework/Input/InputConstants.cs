@@ -11,6 +11,8 @@ namespace RECode.REFramework
 
         public const string Action_Move = "Move";
         public const string Action_Jump = "Jump";
+        public const string Action_Dig = "Dig";
+        public const string Action_Skill = "Skill";
 
         public const string Type_Started = "Started";
         public const string Type_Performed = "Performed";
