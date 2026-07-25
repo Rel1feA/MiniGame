@@ -12,15 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b903922a472ff45a9edaef3754ea50, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  dirFloor:
-    dirPercent: 70
-    stonePercent: 10
-    bedRockPercent: 5
-    treasureBoxPercent: 5
-    orePercent: 10
-  rockFloor:
-    dirPercent: 30
-    stonePercent: 40
-    bedRockPercent: 10
-    treasureBoxPercent: 5
-    orePercent: 10
+  dirtFloorData:
+    blockDatas:
+    - prefabName: Dirt
+      weight: 70
+    - prefabName: Stone
+      weight: 10
+    - prefabName: BedRock
+      weight: 5
+    - prefabName: TreasureBox
+      weight: 5
+    - prefabName: Ore
+      weight: 10
+  rockFloorData:
+    blockDatas:
+    - prefabName: Dirt
+      weight: 30
+    - prefabName: Stone
+      weight: 40
+    - prefabName: BedRock
+      weight: 10
+    - prefabName: TreasureBox
+      weight: 5
+    - prefabName: Ore
+      weight: 10

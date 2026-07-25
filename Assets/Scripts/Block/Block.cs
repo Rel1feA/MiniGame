@@ -11,6 +11,7 @@ public class Block : MonoBehaviour
     [SerializeField]
     private int health;
     private SpriteRenderer spriteRenderer;
+    private Color startColor;
 
 
     private void Awake()
@@ -18,14 +19,19 @@ public class Block : MonoBehaviour
         spriteRenderer= GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        startColor = spriteRenderer.color;
+    }
+
     public virtual void HighLight()
     {
-        transform.DOScale(Vector3.one * 1.2f, 0.2f);
+        spriteRenderer.color = Color.red;
     }
 
     public virtual void ExitHighLight()
     {
-        transform.DOScale(Vector3.one, 0.2f);
+        spriteRenderer.color = startColor;
     }
 
     public virtual void Knocked(int damage)

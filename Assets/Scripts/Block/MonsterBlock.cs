@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using RECode.REFramework;
 
 public class MonsterBlock : Block
 {
@@ -9,10 +8,12 @@ public class MonsterBlock : Block
 
     public override void BeDestoryed()
     {
-        int rand = Random.Range(0, 101);
+        int rand = Random.Range(0, 100);
         if(rand<monsterPercent)
         {
             Debug.Log("出现蝙蝠");
+            GameObject obj=ResourcesManager.Instance.Load<GameObject>("Prefabs/Monsters/Bat");
+            obj.transform.position = transform.position;
         }
         base.BeDestoryed();
     }

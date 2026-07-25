@@ -13,12 +13,22 @@ public class Player : MonoBehaviour
     private Vector2 faceDir;
     private Vector2 inputDir;
     private Block currentBlock;
+    private Animator animator;
+    private PlayMovement movement;
+
+    
 
     public bool isHide;
 
     private void OnDisable()
     {
         UnBindInput();
+    }
+
+    private void Awake()
+    {
+        animator= GetComponent<Animator>();
+        movement= GetComponent<PlayMovement>();
     }
 
     private void Start()
