@@ -5,10 +5,19 @@ using RECode.REFramework;
 
 public class P_MoveState : State<Player>
 {
-    public override void FrameUpdate(Player type)
+
+    public override void FrameUpdate(Player player)
     {
-        Debug.Log("Move");
+        if(player.Movement.VelX==0)
+        {
+            player._Animator.Play("Idle");
+        }
+        else
+        {
+            player._Animator.Play("Move");
+        }
     }
+
     public override void PhysicsUpdate(Player player)
     {
         player.Movement.Move(player.InputDir.x);
@@ -33,9 +42,22 @@ public class P_MoveState : State<Player>
 
 public class P_AirState : State<Player>
 {
-    public override void FrameUpdate(Player type)
+    public override void EnterState(Player player)
     {
-        Debug.Log("Fly");
+        player.Movement.Fly();
+    }
+
+
+    public override void FrameUpdate(Player player)
+    {
+        if(player.Movement.VelY>0)
+        {
+            player._Animator.Play("Fly");
+        }
+        else if(player.Movement.VelY<0)
+        {
+            player._Animator.Play("Fall");
+        }
     }
 
     public override void PhysicsUpdate(Player player)
@@ -49,7 +71,7 @@ public class P_AirState : State<Player>
 
     public override State<Player> ChangeState(Player player)
     {
-        if(player.Movement.isOnGround()&&player.Movement.VelY<-0.1f)
+        if(player.Movement.isOnGround()&&player.Movement.VelY<=0f)
         {
             return player.moveState;
         }

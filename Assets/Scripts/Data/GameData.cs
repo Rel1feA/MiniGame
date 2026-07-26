@@ -8,6 +8,13 @@ public class GameData : ScriptableObject
 {
     public FloorPercentData dirtFloorData;
     public FloorPercentData rockFloorData;
+    public Sprite dirtUp;
+    public Sprite dirtDown;
+    public Sprite dirtMid;
+    public Sprite dirtLeftUp;
+    public Sprite dirtRightUp;
+    public Sprite dirtLeftMid;
+    public Sprite dirtRightMid;
 }
 
 [Serializable]

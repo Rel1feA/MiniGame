@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public PlayMovement Movement { get => movement; }
     public Vector2 InputDir { get => inputDir;}
 
+    public Animator _Animator { get { return animator; } }
+
 
     private void Awake()
     {
@@ -93,6 +95,14 @@ public class Player : MonoBehaviour
         else if(dir==Vector2.right)
         {
             faceDir = Vector2.right;
+        }
+        if(dir.x > 0)
+        {
+            transform.localScale= Vector3.one;
+        }
+        else if(dir.x< 0)
+        {
+            transform.localScale= new Vector3(-1,1,1);
         }
     }
 

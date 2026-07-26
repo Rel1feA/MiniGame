@@ -15,6 +15,8 @@ public class BlockGenerate : MonoBehaviour
     private float interval;
     [SerializeField]
     private string blockPrefabName;
+    [SerializeField]
+    private GameData gameData;
 
     private void Start()
     {
@@ -32,6 +34,27 @@ public class BlockGenerate : MonoBehaviour
                 {
                     o.transform.position = pos;
                     o.transform.parent = transform;
+                    SpriteRenderer spriteRenderer= o.GetComponent<SpriteRenderer>();
+                    if(i==0&&j==0)
+                    {
+                        spriteRenderer.sprite = gameData.dirtLeftUp;
+                    }
+                    else if(j>0&&j<width&&i==0)
+                    {
+                        spriteRenderer.sprite = gameData.dirtUp;
+                    }
+                    else if (i > 0 && i < height&&j==0)
+                    {
+                        spriteRenderer.sprite = gameData.dirtLeftMid;
+                    }
+                    else if(i > 0 && i < height && j == height-1)
+                    {
+                        spriteRenderer.sprite = gameData.dirtRightMid;
+                    }
+                    else
+                    {
+                        spriteRenderer.sprite=gameData.dirtMid;
+                    }
                 });
             }
         }

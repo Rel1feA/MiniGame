@@ -12,7 +12,7 @@ public class UIElasticHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField, Range(0.01f, 0.5f)] private float squeezeAmount = 0.05f;   // 第一阶段挤压/拉伸的幅度
     [SerializeField, Range(0.01f, 0.5f)] private float stretchAmount = 0.03f;  // 第二阶段反向拉伸的幅度
     [SerializeField, Range(0.05f, 0.5f)] private float phaseDuration = 0.08f;  // 每个变形阶段的时长
-    [SerializeField, Range(0.1f, 1f)]     private float recoverDuration = 0.25f;// 回弹恢复时长
+    [SerializeField, Range(0.1f, 1f)]    private float recoverDuration = 0.25f;// 回弹恢复时长
     [SerializeField] private Ease recoverEase = Ease.OutBack;                 // 回弹缓动类型
 
     private RectTransform rectTransform;

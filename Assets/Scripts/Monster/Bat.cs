@@ -15,7 +15,6 @@ public class Bat : MonoBehaviour
     private float sleepTime;
     private Vector2 chaseDir;
 
-    [SerializeField]
     private Transform targetTra;
     private Rigidbody2D rb2D;
     private bool isSleeping=true;
@@ -24,16 +23,6 @@ public class Bat : MonoBehaviour
     private void Awake()
     {
         rb2D=GetComponent<Rigidbody2D>();
-    }
-
-    private void OnEnable()
-    {
-        EventCenter.Instance.AddListener<Player>("PlayerUseSkill", OnPlayerUseSkill);
-    }
-
-    private void OnDisable()
-    {
-        EventCenter.Instance.RemoveListener<Player>("PlayerUseSkill", OnPlayerUseSkill);
     }
 
     private void Start()
@@ -86,12 +75,6 @@ public class Bat : MonoBehaviour
             RandDir();
         }
         targetTra = _transform;
-    }
-
-    private void OnPlayerUseSkill(Player player)
-    {
-        if (player.isHide) SetTarget(null);
-        else SetTarget(player.transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

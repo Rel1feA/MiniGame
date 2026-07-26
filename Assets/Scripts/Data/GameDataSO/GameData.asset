@@ -36,3 +36,10 @@ MonoBehaviour:
       weight: 5
     - prefabName: Ore
       weight: 10
+  dirtUp: {fileID: 1807610768, guid: 499ad65132157364aaf92713614f3ded, type: 3}
+  dirtDown: {fileID: -2113937047, guid: 499ad65132157364aaf92713614f3ded, type: 3}
+  dirtMid: {fileID: -2113937047, guid: 499ad65132157364aaf92713614f3ded, type: 3}
+  dirtLeftUp: {fileID: 1362105861, guid: 499ad65132157364aaf92713614f3ded, type: 3}
+  dirtRightUp: {fileID: 1315849928, guid: 499ad65132157364aaf92713614f3ded, type: 3}
+  dirtLeftMid: {fileID: 1362105861, guid: 499ad65132157364aaf92713614f3ded, type: 3}
+  dirtRightMid: {fileID: 1362105861, guid: 499ad65132157364aaf92713614f3ded, type: 3}
