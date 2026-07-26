@@ -16,53 +16,66 @@ public class Player : MonoBehaviour
     private Animator animator;
     private PlayMovement movement;
 
+    public P_MoveState moveState;
+    public P_AirState airState;
+    public P_DigState digState;
+    public P_HideState hideState;
+
+    private State<Player> currentState;
     
 
     public bool isHide;
 
-    private void OnDisable()
-    {
-        UnBindInput();
-    }
+    public PlayMovement Movement { get => movement; }
+    public Vector2 InputDir { get => inputDir;}
+
 
     private void Awake()
     {
         animator= GetComponent<Animator>();
         movement= GetComponent<PlayMovement>();
+        moveState=new P_MoveState();
+        airState=new P_AirState();
+        digState=new P_DigState();
+        hideState=new P_HideState();
     }
 
     private void Start()
     {
         ResetPlayer();
-        BindInput();
     }
 
     private void Update()
     {
         HandleInput();
-        SetFaceDir(inputDir);
+        SetFaceDir(InputDir);
         CheckBlock();
+        currentState.FrameUpdate(this);
+        HandleChangeState();
     }
 
-    private void BindInput()
+    private void FixedUpdate()
     {
-        InputManager.Instance.BindAction(InputConstants.Action_Skill, UseSkill, InteractionType.Performed);
-        InputManager.Instance.BindAction(InputConstants.Action_Dig,DigBlock,InteractionType.Performed);
+        currentState.PhysicsUpdate(this);
     }
 
-    private void UnBindInput()
-    {
-        InputManager.Instance.UnBindAction(InputConstants.Action_Dig, DigBlock, InteractionType.Performed);
-        InputManager.Instance.BindAction(InputConstants.Action_Skill, UseSkill, InteractionType.Performed);
-    }
-
-
-    public void HandleInput()
+    private void HandleInput()
     {
        inputDir=InputManager.Instance.GetAxis(InputConstants.Action_Move);
     }
 
-    public void SetFaceDir(Vector2 dir)
+    private void HandleChangeState()
+    {
+        State<Player> nextState = currentState.ChangeState(this);
+        if(nextState!=null)
+        {
+            currentState.ExitState(this);
+            currentState=nextState;
+            currentState.EnterState(this);
+        }
+    }
+
+    private void SetFaceDir(Vector2 dir)
     {
         if(dir==Vector2.up)
         {
@@ -85,12 +98,13 @@ public class Player : MonoBehaviour
     public void ResetPlayer()
     {
         faceDir = Vector2.down;
+        currentState = moveState;
+        currentState.EnterState(this);
     }
 
     private void CheckBlock()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, faceDir, digDistance, LayerMask.GetMask("Block"));
-
         if (hit.collider != null)
         {
             // 获取目标方块组件
