@@ -748,8 +748,8 @@ MonoBehaviour:
   digDistance: 0.65
   digRayOffset: {x: 0, y: 0.45}
   damage: 1
-  hideCoolTime: 3
-  hideDuration: 1
+  hideCoolTime: 2
+  hideDuration: 2
   pickAxeSprite: {fileID: 896758049}
   isHide: 0
 --- !u!95 &1715005373

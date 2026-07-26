@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e817979a039ee6943ba7ef1d3f7028e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 6.5
+  chaseSpeed: 7
   minSleepTime: 1
   maxSleepTime: 3
   deadDistance: 15

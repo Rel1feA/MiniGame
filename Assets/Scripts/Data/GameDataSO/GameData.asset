@@ -48,3 +48,4 @@ MonoBehaviour:
       weight: 5
     - prefabName: Ore
       weight: 15
+  levelTime: 90

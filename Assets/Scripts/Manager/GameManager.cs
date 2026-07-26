@@ -10,6 +10,10 @@ public class GameManager : MonoSingleton<GameManager>
     public float remainingTime;
     public int monsterPercent;
 
-    private float levelTime;
     private float targetScore;
+
+    public void CalculateValue()
+    {
+
+    }
 }
