@@ -9,21 +9,22 @@ public class Player : MonoBehaviour
     private float digDistance;
     [SerializeField]
     private int damage;
+    [SerializeField]
+    private int maxHealth;
 
     private Vector2 faceDir;
     private Vector2 inputDir;
     private Block currentBlock;
     private Animator animator;
     private PlayMovement movement;
+    private int currentHealth;
 
     public P_MoveState moveState;
     public P_AirState airState;
     public P_DigState digState;
     public P_HideState hideState;
-
     private State<Player> currentState;
     
-
     public bool isHide;
 
     public PlayMovement Movement { get => movement; }
