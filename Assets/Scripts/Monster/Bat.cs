@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RECode.REFramework;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Bat : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Bat : MonoBehaviour
     private float maxSleepTime;
     [SerializeField]
     private float deadDistance;
+    [SerializeField]
+    private float loseScore;
 
     private float sleepTime;
     private Vector2 chaseDir;
@@ -28,6 +31,16 @@ public class Bat : MonoBehaviour
     {
         rb2D=GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        EventCenter.Instance.AddListener<LevelData>("NextLevel", UpdateScore);
+    }
+
+    private void OnDisable()
+    {
+        EventCenter.Instance.RemoveListener<LevelData>("NextLevel", UpdateScore);
     }
 
     private void Start()
@@ -101,11 +114,18 @@ public class Bat : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        if (isSleeping||player.isHide) return;
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("扣分！！！");
+            GameManager.Instance.score -= loseScore;
+            Destroy(gameObject);
         }
+    }
+
+    public void UpdateScore(LevelData levelData)
+    {
+        loseScore = levelData.monsterScore;
     }
 }

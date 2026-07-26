@@ -230,5 +230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   deadSprite: {fileID: -615494404, guid: 4ad1841e5f3f6c74d95d92c201171211, type: 3}
-  score: 10
+  score: 100
   childSprite: {fileID: 6105580027343706226}
+  type: 0

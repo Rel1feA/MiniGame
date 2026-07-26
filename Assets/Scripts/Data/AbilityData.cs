@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Ability")]
 public class AbilityData : ScriptableObject
 {
+    public int id;
     public string abilityName;               
     public string abilityClassName;          
     public Sprite icon;

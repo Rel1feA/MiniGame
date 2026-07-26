@@ -212,9 +212,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0329d4b16636f40b5cf3e4c04f7bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 0
+  currentLevelIndex: 1
   score: 0
-  remainingTime: 0
+  currentLevelData:
+    levelIndex: 0
+    treasureScore: 0
+    oreScore: 0
+    targetScore: 0
+    monsterScore: 0
   gameData: {fileID: 11400000, guid: 301509c36f6c7fe4787ce4b6045cd841, type: 2}
 --- !u!1 &811286459
 GameObject:
@@ -305,6 +310,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPath: Prefabs/UI
+--- !u!1 &1375508403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1375508405}
+  - component: {fileID: 1375508404}
+  m_Layer: 0
+  m_Name: AbilityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1375508404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375508403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3146f532b748dae4c9a4323e23b6a61b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityDatas:
+  - {fileID: 11400000, guid: cb0aad6b39d113149b2c0f7ef594fa8d, type: 2}
+  - {fileID: 11400000, guid: 4961fe0669243e14297304109cad922a, type: 2}
+  - {fileID: 11400000, guid: af133ca6260d5474bb1fd13873fef84c, type: 2}
+--- !u!4 &1375508405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375508403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562225070
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +528,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -543,3 +596,4 @@ SceneRoots:
   - {fileID: 227571242}
   - {fileID: 514536960}
   - {fileID: 1908840484}
+  - {fileID: 1375508405}

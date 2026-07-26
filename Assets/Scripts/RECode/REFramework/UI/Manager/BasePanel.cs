@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 namespace RECode.REFramework
 {
@@ -15,6 +16,7 @@ namespace RECode.REFramework
             FindChildrenControl<Button>();
             FindChildrenControl<Image>();
             FindChildrenControl<Text>();
+            FindChildrenControl<TMP_Text>();
         }
 
         private void FindChildrenControl<T>() where T : UIBehaviour

@@ -58,7 +58,7 @@ MonoBehaviour:
   - levelIndex: 2
     treasureScore: 115
     oreScore: 23
-    targetScore: 300
+    targetScore: 360
     monsterScore: 15
   - levelIndex: 3
     treasureScore: 132
