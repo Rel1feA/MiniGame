@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   digDistance: 0.6
   damage: 1
+  maxHealth: 6
   isHide: 0
 --- !u!70 &1715005372
 CapsuleCollider2D:
