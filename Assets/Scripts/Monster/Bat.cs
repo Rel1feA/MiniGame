@@ -19,10 +19,12 @@ public class Bat : MonoBehaviour
     private Rigidbody2D rb2D;
     private bool isSleeping=true;
     private float timer;
+    private Animator animator;
 
     private void Awake()
     {
         rb2D=GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -40,6 +42,7 @@ public class Bat : MonoBehaviour
         else
         {
             isSleeping= false;
+            animator.Play("Fly");
         }
     }
 
