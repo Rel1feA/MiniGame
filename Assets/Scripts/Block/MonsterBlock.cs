@@ -16,12 +16,8 @@ public class MonsterBlock : Block
             ResourcesManager.Instance.LoadAsync<GameObject>("Prefabs/Monsters/Bat", (o) =>
             {
                 o.transform.position=transform.position;
-                base.BeDestoryed();
             });
         }
-        else
-        {
-            base.BeDestoryed();
-        }
+        base.BeDestoryed();
     }
 }

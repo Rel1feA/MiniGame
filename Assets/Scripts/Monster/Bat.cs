@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RECode.REFramework;
@@ -11,15 +11,18 @@ public class Bat : MonoBehaviour
     private float minSleepTime;
     [SerializeField]
     private float maxSleepTime;
+    [SerializeField]
+    private float deadDistance;
 
     private float sleepTime;
     private Vector2 chaseDir;
+    private bool isChase;
 
-    private Transform targetTra;
     private Rigidbody2D rb2D;
     private bool isSleeping=true;
     private float timer;
     private Animator animator;
+    private Player player;
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class Bat : MonoBehaviour
     private void Start()
     {
         sleepTime=Random.Range(minSleepTime,maxSleepTime);
+        EventCenter.Instance.EventTrigger("BatAlive", this);
         RandDir();
     }
 
@@ -44,6 +48,23 @@ public class Bat : MonoBehaviour
             isSleeping= false;
             animator.Play("Fly");
         }
+        if(isChase)
+        {
+            chaseDir=(player.transform.position-transform.position).normalized;
+            if(player.isHide)
+            {
+                isChase = false;
+                RandDir();
+            }
+        }
+        else
+        {
+            if(!player.isHide)
+            {
+                isChase = true;
+            }
+        }
+        CheckDead();
     }
 
 
@@ -57,11 +78,12 @@ public class Bat : MonoBehaviour
 
     public void Chase()
     {
-        if (targetTra != null)
-        {
-            chaseDir = (targetTra.position - transform.position).normalized;
-        }
         rb2D.velocity = chaseDir * chaseSpeed;
+    }
+
+    public void SetPlayer(Player player)
+    {
+        this.player = player;
     }
 
     private void RandDir()
@@ -71,20 +93,19 @@ public class Bat : MonoBehaviour
         chaseDir = new Vector2(randX, randY).normalized;
     }
 
-    public void SetTarget(Transform _transform)
+    private void CheckDead()
     {
-        if(_transform==null)
+        if(Vector3.Distance(player.transform.position,transform.position)>deadDistance)
         {
-            RandDir();
+            Destroy(gameObject);
         }
-        targetTra = _transform;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-
+            Debug.Log("扣分！！！");
         }
     }
 }

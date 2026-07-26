@@ -12,14 +12,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int damage;
     [SerializeField]
-    private int maxHealth;
+    private float hideCoolTime;
+    [SerializeField]
+    private float hideDuration;
+    [SerializeField]
+    private SpriteRenderer pickAxeSprite;
 
     private Vector2 faceDir;
     private Vector2 inputDir;
     private Block currentBlock;
     private Animator animator;
     private PlayMovement movement;
-    private int currentHealth;
+    private SpriteRenderer spriteRenderer;
+    private float timer;
 
     public P_MoveState moveState;
     public P_AirState airState;
@@ -31,18 +36,33 @@ public class Player : MonoBehaviour
 
     public PlayMovement Movement { get => movement; }
     public Vector2 InputDir { get => inputDir;}
-
     public Animator _Animator { get { return animator; } }
+    public SpriteRenderer _SpriteRenender { get { return spriteRenderer; } }
+    public float HideDuration { get { return hideDuration; } }
+    public float Timer { get { return timer; } }
+    public float HideCoolTime { get { return hideCoolTime; } }
+    public SpriteRenderer PickaxeSprite { get { return pickAxeSprite; } }
 
 
     private void Awake()
     {
         animator= GetComponent<Animator>();
         movement= GetComponent<PlayMovement>();
-        moveState=new P_MoveState();
+        spriteRenderer= GetComponent<SpriteRenderer>();
+        moveState =new P_MoveState();
         airState=new P_AirState();
         digState=new P_DigState();
         hideState=new P_HideState();
+    }
+
+    private void OnEnable()
+    {
+        EventCenter.Instance.AddListener<Bat>("BatAlive", OnBatAlive);
+    }
+
+    private void OnDisable()
+    {
+        EventCenter.Instance.AddListener<Bat>("BatAlive", OnBatAlive);
     }
 
     private void Start()
@@ -57,6 +77,7 @@ public class Player : MonoBehaviour
         CheckBlock();
         currentState.FrameUpdate(this);
         HandleChangeState();
+        if (timer < hideCoolTime) timer += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -113,6 +134,7 @@ public class Player : MonoBehaviour
         faceDir = Vector2.down;
         currentState = moveState;
         currentState.EnterState(this);
+        timer = 3.5f;
     }
 
     private void CheckBlock()
@@ -160,6 +182,16 @@ public class Player : MonoBehaviour
     {
         isHide = !isHide;
         EventCenter.Instance.EventTrigger("PlayerUseSkill", this);
+    }
+
+    public void ResetTimer()
+    {
+        timer = 0;
+    }
+
+    private void OnBatAlive(Bat bat)
+    {
+        bat.SetPlayer(this);
     }
 
 

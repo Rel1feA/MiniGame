@@ -9,6 +9,7 @@ public class GameData : ScriptableObject
     public FloorPercentData surfaceFloorData;
     public FloorPercentData dirtFloorData;
     public FloorPercentData rockFloorData;
+    public float startLevelTime;
 }
 
 [Serializable]

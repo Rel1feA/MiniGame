@@ -11,13 +11,17 @@ public class Block : MonoBehaviour
 {
     [SerializeField]
     private int health;
+    [SerializeField]
+    private Sprite deadSprite;
     private SpriteRenderer spriteRenderer;
     private Color startColor;
+    private Collider2D col;
 
 
     private void Awake()
     {
         spriteRenderer= GetComponent<SpriteRenderer>();
+        col= GetComponent<BoxCollider2D>();    
     }
 
     private void Start()
@@ -47,6 +51,8 @@ public class Block : MonoBehaviour
 
     public virtual void BeDestoryed()
     {
-        Destroy(gameObject);
+        ExitHighLight();
+        spriteRenderer.sprite=deadSprite;
+        col.enabled = false;
     }
 }

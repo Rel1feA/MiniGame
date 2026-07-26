@@ -80,4 +80,9 @@ public class PlayMovement : MonoBehaviour
             rb2D.gravityScale = normalGravityScale;
         }
     }
+
+    public void ChangeVel(Vector2 vel)
+    {
+        rb2D.velocity = vel;
+    }
 }
