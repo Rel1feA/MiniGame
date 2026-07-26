@@ -21,8 +21,10 @@ public class PlayMovement : MonoBehaviour
 
     private Rigidbody2D rb2D;
     private Collider2D col2D;
-    private float inputX;
     private float normalGravityScale;
+
+    public float VelX { get => rb2D.velocity.x; }
+    public float VelY { get => rb2D.velocity.y; }
 
     private void Awake()
     {
@@ -38,18 +40,12 @@ public class PlayMovement : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
         SetGroundBoxValue();
     }
 
     private void FixedUpdate()
     {
         ChangeGravityScale();
-        Move(inputX);
-        if(InputManager.Instance.GetKey(InputConstants.Action_Jump))
-        {
-            Fly();
-        }
     }
 
     public void Move(float input)
@@ -60,11 +56,6 @@ public class PlayMovement : MonoBehaviour
     public void Fly()
     {
         rb2D.velocity=new Vector2(rb2D.velocity.x,flySpeed);
-    }
-
-    public void GetInput()
-    {
-        inputX = InputManager.Instance.GetAxis(InputConstants.Action_Move).x;
     }
 
     public bool isOnGround()
@@ -88,11 +79,5 @@ public class PlayMovement : MonoBehaviour
         {
             rb2D.gravityScale = normalGravityScale;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(groundBoxOrigin, groundBoxSize);
     }
 }
