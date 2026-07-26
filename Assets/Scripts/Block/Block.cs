@@ -14,8 +14,6 @@ public class Block : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color startColor;
 
-    public TreasureData ContainedTreasure { get; set; }
-
 
     private void Awake()
     {
@@ -49,17 +47,6 @@ public class Block : MonoBehaviour
 
     public virtual void BeDestoryed()
     {
-        if(ContainedTreasure!=null)
-        {
-            SpawnTreasureItem();
-        }
         Destroy(gameObject);
-    }
-
-    private void SpawnTreasureItem()
-    {
-        GameObject obj = Instantiate(ContainedTreasure.dropPrefab, transform.position, Quaternion.identity);
-        TreasureItem treasureItem=obj.GetComponent<TreasureItem>();
-        treasureItem.Init(ContainedTreasure);
     }
 }

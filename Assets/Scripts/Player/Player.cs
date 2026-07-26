@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float digDistance;
     [SerializeField]
+    private Vector2 digRayOffset;
+    [SerializeField]
     private int damage;
     [SerializeField]
     private int maxHealth;
@@ -115,7 +117,7 @@ public class Player : MonoBehaviour
 
     private void CheckBlock()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, faceDir, digDistance, LayerMask.GetMask("Block"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position+(Vector3)digRayOffset, faceDir, digDistance, LayerMask.GetMask("Block"));
         if (hit.collider != null)
         {
             // 获取目标方块组件
@@ -164,6 +166,6 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, faceDir * digDistance);
+        Gizmos.DrawRay(transform.position+(Vector3)digRayOffset, faceDir * digDistance);
     }
 }

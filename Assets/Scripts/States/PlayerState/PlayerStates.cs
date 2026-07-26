@@ -44,7 +44,10 @@ public class P_AirState : State<Player>
 {
     public override void EnterState(Player player)
     {
-        player.Movement.Fly();
+        if(player.Movement.isOnGround())
+        {
+            player.Movement.Fly();
+        }
     }
 
 
@@ -75,6 +78,10 @@ public class P_AirState : State<Player>
         {
             return player.moveState;
         }
+        else if (InputManager.Instance.GetKeyDown(InputConstants.Action_Dig))
+        {
+            return player.digState;
+        }
         else
         {
             return null;
@@ -86,18 +93,26 @@ public class P_DigState : State<Player>
 {
     public override void FrameUpdate(Player player)
     {
-        player.DigBlock();
+        player._Animator.Play("Dig");
+        player.Movement.Move(player.InputDir.x);
+        if (InputManager.Instance.GetKey(InputConstants.Action_Jump))
+        {
+            player.Movement.Fly();
+        }
     }
 
     public override State<Player> ChangeState(Player player)
     {
-        if(InputManager.Instance.GetKeyUp(InputConstants.Action_Dig)||player.InputDir!=Vector2.zero)
+        if(InputManager.Instance.GetKeyUp(InputConstants.Action_Dig))
         {
-            if(InputManager.Instance.GetKeyDown(InputConstants.Action_Jump))
+            if(player.Movement.isOnGround())
+            {
+                return player.moveState;
+            }
+            else
             {
                 return player.airState;
             }
-            return player.moveState;
         }
         else
         {

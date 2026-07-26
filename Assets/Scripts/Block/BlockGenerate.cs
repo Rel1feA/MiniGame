@@ -17,6 +17,12 @@ public class BlockGenerate : MonoBehaviour
     private string blockPrefabName;
     [SerializeField]
     private GameData gameData;
+    [SerializeField]
+    private int firstFloor;
+    [SerializeField]
+    private int secondFloor;
+
+    private FloorPercentData floorPercentData;
 
     private void Start()
     {
@@ -25,36 +31,36 @@ public class BlockGenerate : MonoBehaviour
 
     private void GenerateBlock()
     {
-        for(int i=0;i<height;i++)
+        floorPercentData = gameData.dirtFloorData;
+        for (int i = 0; i < height; i++)
         {
-            for(int j=0;j<width;j++)
+            for (int j = 0; j < width; j++)
             {
-                Vector2 pos=startPos.position+new Vector3(j*interval,-i*interval,0);
-                ResourcesManager.Instance.LoadAsync<GameObject>($"Prefabs/Blocks/{blockPrefabName}", (o) =>
+                Vector3 pos = startPos.position + new Vector3(j * interval, -i * interval);
+                if (i == firstFloor + 1)
                 {
-                    o.transform.position = pos;
+                    floorPercentData = gameData.surfaceFloorData;
+                }
+                else if(i == secondFloor + 1)
+                {
+                    floorPercentData = gameData.rockFloorData;
+                }
+                int randNum = Random.Range(0, 100);
+                int cumulative = 0;
+                string blockName = "Dirt";
+                foreach (var blockData in floorPercentData.blockDatas)
+                {
+                    cumulative += blockData.weight;
+                    if (randNum <= cumulative)
+                    {
+                        blockName = blockData.prefabName;
+                        break;
+                    }
+                }
+                ResourcesManager.Instance.LoadAsync<GameObject>($"Prefabs/Blocks/{blockName}", (o) =>
+                {
+                    o.transform.position=pos;
                     o.transform.parent = transform;
-                    SpriteRenderer spriteRenderer= o.GetComponent<SpriteRenderer>();
-                    if(i==0&&j==0)
-                    {
-                        spriteRenderer.sprite = gameData.dirtLeftUp;
-                    }
-                    else if(j>0&&j<width&&i==0)
-                    {
-                        spriteRenderer.sprite = gameData.dirtUp;
-                    }
-                    else if (i > 0 && i < height&&j==0)
-                    {
-                        spriteRenderer.sprite = gameData.dirtLeftMid;
-                    }
-                    else if(i > 0 && i < height && j == height-1)
-                    {
-                        spriteRenderer.sprite = gameData.dirtRightMid;
-                    }
-                    else
-                    {
-                        spriteRenderer.sprite=gameData.dirtMid;
-                    }
                 });
             }
         }
