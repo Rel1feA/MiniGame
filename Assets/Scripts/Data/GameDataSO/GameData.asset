@@ -49,3 +49,104 @@ MonoBehaviour:
     - prefabName: Ore
       weight: 15
   levelTime: 90
+  levelDatas:
+  - levelIndex: 1
+    treasureScore: 100
+    oreScore: 20
+    targetScore: 300
+    monsterScore: 15
+  - levelIndex: 2
+    treasureScore: 115
+    oreScore: 23
+    targetScore: 300
+    monsterScore: 15
+  - levelIndex: 3
+    treasureScore: 132
+    oreScore: 26
+    targetScore: 432
+    monsterScore: 18
+  - levelIndex: 4
+    treasureScore: 152
+    oreScore: 30
+    targetScore: 518
+    monsterScore: 20
+  - levelIndex: 5
+    treasureScore: 175
+    oreScore: 35
+    targetScore: 622
+    monsterScore: 22
+  - levelIndex: 6
+    treasureScore: 201
+    oreScore: 40
+    targetScore: 746
+    monsterScore: 24
+  - levelIndex: 7
+    treasureScore: 231
+    oreScore: 46
+    targetScore: 896
+    monsterScore: 27
+  - levelIndex: 8
+    treasureScore: 266
+    oreScore: 53
+    targetScore: 1075
+    monsterScore: 29
+  - levelIndex: 9
+    treasureScore: 306
+    oreScore: 61
+    targetScore: 1290
+    monsterScore: 32
+  - levelIndex: 10
+    treasureScore: 352
+    oreScore: 70
+    targetScore: 1548
+    monsterScore: 35
+  - levelIndex: 11
+    treasureScore: 405
+    oreScore: 81
+    targetScore: 1858
+    monsterScore: 39
+  - levelIndex: 12
+    treasureScore: 465
+    oreScore: 93
+    targetScore: 2229
+    monsterScore: 43
+  - levelIndex: 13
+    treasureScore: 535
+    oreScore: 107
+    targetScore: 2675
+    monsterScore: 47
+  - levelIndex: 14
+    treasureScore: 615
+    oreScore: 123
+    targetScore: 3210
+    monsterScore: 52
+  - levelIndex: 15
+    treasureScore: 708
+    oreScore: 142
+    targetScore: 3852
+    monsterScore: 57
+  - levelIndex: 16
+    treasureScore: 814
+    oreScore: 163
+    targetScore: 4622
+    monsterScore: 63
+  - levelIndex: 17
+    treasureScore: 936
+    oreScore: 187
+    targetScore: 5547
+    monsterScore: 69
+  - levelIndex: 18
+    treasureScore: 1076
+    oreScore: 215
+    targetScore: 6656
+    monsterScore: 76
+  - levelIndex: 19
+    treasureScore: 1238
+    oreScore: 248
+    targetScore: 7987
+    monsterScore: 83
+  - levelIndex: 20
+    treasureScore: 1423
+    oreScore: 285
+    targetScore: 9584
+    monsterScore: 92

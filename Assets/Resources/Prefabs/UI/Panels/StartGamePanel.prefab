@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1319275702520543965}
   - component: {fileID: 6665339384967134139}
   - component: {fileID: 5068152015585245154}
+  - component: {fileID: 4832194031480314825}
   m_Layer: 5
   m_Name: StartGameBTN
   m_TagString: Untagged
@@ -120,6 +121,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4832194031480314825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552285363751240834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd4f52c40890b443be564731976ca71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squeezeAmount: 0.05
+  stretchAmount: 0.03
+  phaseDuration: 0.08
+  recoverDuration: 0.25
+  recoverEase: 27
 --- !u!1 &741489807186891688
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +439,7 @@ GameObject:
   - component: {fileID: 7841342994559826020}
   - component: {fileID: 3283837024813448336}
   - component: {fileID: 6356336899965190785}
+  - component: {fileID: 919956758831201686}
   m_Layer: 5
   m_Name: QuitGameBTN
   m_TagString: Untagged
@@ -529,6 +548,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &919956758831201686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470426481949009122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd4f52c40890b443be564731976ca71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squeezeAmount: 0.05
+  stretchAmount: 0.03
+  phaseDuration: 0.08
+  recoverDuration: 0.25
+  recoverEase: 27
 --- !u!1 &4047140882981912585
 GameObject:
   m_ObjectHideFlags: 0

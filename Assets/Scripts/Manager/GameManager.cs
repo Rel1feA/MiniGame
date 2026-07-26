@@ -8,12 +8,54 @@ public class GameManager : MonoSingleton<GameManager>
     public int currentLevel;
     public float score;
     public float remainingTime;
-    public int monsterPercent;
+    [SerializeField]
+    private GameData gameData;
 
-    private float targetScore;
+    private Dictionary<int, LevelData> levelDataDic=new Dictionary<int, LevelData>();
 
-    public void CalculateValue()
+    private void Start()
+    {
+        CacheLevelData();
+        UIManager.Instance.ShowPanel<StartGamePanel>("StartGamePanel",E_UI_Canvas.Static);
+    }
+
+    private void Update()
+    {
+        remainingTime= Time.deltaTime;
+        if(remainingTime < 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void StartGame()
+    {
+        LoadSceneManager.Instance.LoadSceneAsync(1, null, (value) =>
+        {
+            UIManager.Instance.HidePanel("StartGamePanel");
+        });
+    }
+
+    public void GameOver()
     {
 
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ResetTimer()
+    {
+        remainingTime = gameData.levelTime;
+    }
+
+    private void CacheLevelData()
+    {
+        foreach(var levelData in gameData.levelDatas)
+        {
+            levelDataDic[levelData.levelIndex] = levelData;
+        }
     }
 }
