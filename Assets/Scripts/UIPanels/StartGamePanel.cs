@@ -10,8 +10,12 @@ public class StartGamePanel : BasePanel
     {
         GetControl<Button>("StartGameBTN").onClick.AddListener(()=> {
             GameManager.Instance.StartGame();
+            AudioManager.Instance.PlayAudio("button");
             UIManager.Instance.HidePanel("StartGamePanel");
         });
-        GetControl<Button>("QuitGameBTN").onClick.AddListener(GameManager.Instance.QuitGame);
+        GetControl<Button>("QuitGameBTN").onClick.AddListener(()=> {
+            GameManager.Instance.QuitGame();
+            AudioManager.Instance.PlayAudio("button");
+        });
     }
 }

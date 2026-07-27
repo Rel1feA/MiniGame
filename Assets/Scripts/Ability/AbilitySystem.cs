@@ -42,11 +42,13 @@ public class AbilitySystem : MonoSingleton<AbilitySystem>
                 player.AddDigSpeedMul(0.5f);
                 break;
             case 3:
+                player._Boom.count++;
                 break;
             case 4:
+                player._Digpotion.count++;
                 break;
             case 5:
-                player.gameObject.AddComponent<Translate>();
+                player._Translate.count++;
                 break;
         }
     }

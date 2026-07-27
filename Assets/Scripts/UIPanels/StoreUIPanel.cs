@@ -39,18 +39,21 @@ public class StoreUIPanel : BasePanel
             AbilitySystem.Instance.HandleAbility(AbilitySystem.Instance.currentAbility[0].id, GameManager.Instance.player);
             GameManager.Instance.NextLevel();
             UIManager.Instance.HidePanel("StoreUIPanel");
+            AudioManager.Instance.PlayAudio("button");
         });
         UIManager.AddCustomEventListener(GetControl<Image>("Card2BG"), EventTriggerType.PointerClick, (value) =>
         {
             AbilitySystem.Instance.HandleAbility(AbilitySystem.Instance.currentAbility[1].id, GameManager.Instance.player);
             GameManager.Instance.NextLevel();
             UIManager.Instance.HidePanel("StoreUIPanel");
+            AudioManager.Instance.PlayAudio("button");
         });
         UIManager.AddCustomEventListener(GetControl<Image>("Card3BG"), EventTriggerType.PointerClick, (value) =>
         {
             AbilitySystem.Instance.HandleAbility(AbilitySystem.Instance.currentAbility[2].id, GameManager.Instance.player);
             GameManager.Instance.NextLevel();
             UIManager.Instance.HidePanel("StoreUIPanel");
+            AudioManager.Instance.PlayAudio("button");
         });
     }
 

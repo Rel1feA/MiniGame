@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class Translate : MonoBehaviour
 {
+    [SerializeField]
     private Player player;
     public int count;
     [SerializeField]
     private Transform targetPos;
 
-    public void Init(Player player)
-    {
-        this.player = player;
-    }
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Use();
         }

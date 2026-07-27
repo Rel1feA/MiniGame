@@ -221,6 +221,8 @@ MonoBehaviour:
     targetScore: 0
     monsterScore: 0
   gameData: {fileID: 11400000, guid: 301509c36f6c7fe4787ce4b6045cd841, type: 2}
+  player: {fileID: 0}
+  isCoolTimer: 0
 --- !u!1 &811286459
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +347,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af133ca6260d5474bb1fd13873fef84c, type: 2}
   - {fileID: 11400000, guid: 6baa9b0fc3a40204d8d79211facb69ce, type: 2}
   - {fileID: 11400000, guid: 1051d68fb7a6234478ca7f182bfd54cd, type: 2}
+  currentAbility: []
 --- !u!4 &1375508405
 Transform:
   m_ObjectHideFlags: 0
@@ -492,7 +495,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb00639131c1df40904b44172cb082c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - clip: {fileID: 8300000, guid: c7d6b681de3c97248b0e370fbaa9c3ea, type: 3}
+    mixerGroup: {fileID: 7073054640990903247, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
+    audioType: 1
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b7fdd50fb7911e848893d9fbf9948d28, type: 3}
+    mixerGroup: {fileID: -7393696766348697214, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
+    audioType: 0
+    volume: 1
+    playOnAwake: 1
+    loop: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d01b73dc51e250347b60e09ebb244132, type: 3}
+    mixerGroup: {fileID: 7073054640990903247, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
+    audioType: 1
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fce809e7e6aa1b549bef5ce404cb034b, type: 3}
+    mixerGroup: {fileID: 7073054640990903247, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
+    audioType: 1
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 928d4c103d7bd6441b82e1e512ce9108, type: 3}
+    mixerGroup: {fileID: 7073054640990903247, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
+    audioType: 1
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+    audioSource: {fileID: 0}
   mixer: {fileID: 24100000, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
 --- !u!1 &1908840481
 GameObject:

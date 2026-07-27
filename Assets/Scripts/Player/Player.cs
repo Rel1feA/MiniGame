@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float timer;
     private float digSpeedMul=1;
+    private Translate translate;
+    private DigPotion digPotion;
+    private Boom boom;
 
     public P_MoveState moveState;
     public P_AirState airState;
@@ -45,6 +48,9 @@ public class Player : MonoBehaviour
     public SpriteRenderer PickaxeSprite { get { return pickAxeSprite; } }
 
     public float DigSpeedMul { get { return digSpeedMul; } }
+    public Translate _Translate { get { return translate; } }
+    public DigPotion _Digpotion { get { return digPotion; } }
+    public Boom _Boom { get { return boom; } }
 
 
     private void Awake()
@@ -52,6 +58,9 @@ public class Player : MonoBehaviour
         animator= GetComponent<Animator>();
         movement= GetComponent<PlayMovement>();
         spriteRenderer= GetComponent<SpriteRenderer>();
+        translate= GetComponent<Translate>();
+        digPotion= GetComponent<DigPotion>();
+        boom= GetComponent<Boom>();
         moveState =new P_MoveState();
         airState=new P_AirState();
         digState=new P_DigState();
@@ -188,6 +197,7 @@ public class Player : MonoBehaviour
     {
         if(currentBlock == null) return;
         currentBlock.Knocked(damage);
+        AudioManager.Instance.PlayAudio("gravel1");
         currentBlock = null;
     }
 

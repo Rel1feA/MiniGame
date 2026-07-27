@@ -12,6 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField]
     private GameData gameData;
     public Player player;
+    public bool isCoolTimer;
 
     public int RemainTime { get { return (int)remainingTime; } }
 
@@ -25,11 +26,15 @@ public class GameManager : MonoSingleton<GameManager>
         currentLevelData = GetLevelData(1);
         UIManager.Instance.ShowPanel<StartGamePanel>("StartGamePanel",E_UI_Canvas.Static);
         remainingTime = gameData.levelTime;
+        AudioManager.Instance.PlayAudio("BGM");
     }
 
     private void Update()
     {
-        remainingTime-= Time.deltaTime;
+        if(!isCoolTimer)
+        {
+            remainingTime -= Time.deltaTime;
+        }
         if(remainingTime < 0)
         {
             GameOver();
@@ -53,6 +58,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void NextLevel()
     {
+        isCoolTimer= false;
         currentLevelIndex++;
         score -= currentLevelData.targetScore;
         currentLevelData = GetLevelData(currentLevelIndex);
@@ -64,6 +70,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (score < currentLevelData.targetScore) return;
         AbilitySystem.Instance.GenerateStore(3);
+        AudioManager.Instance.PlayAudio("levelup");
+        isCoolTimer= true;
     }
 
     public void PauseGame()
@@ -87,6 +95,7 @@ public class GameManager : MonoSingleton<GameManager>
         Time.timeScale = 1;
         UIManager.Instance.HidePanel("GameOverPanel");
         remainingTime = gameData.levelTime;
+        score = 0;
         EventCenter.Instance.EventTrigger("RestartGame");
     }
 

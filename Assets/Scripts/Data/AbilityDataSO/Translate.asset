@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 5
   abilityTitleName: "\u4F20\u9001\u95E8"
   icon: {fileID: -1745855569, guid: 4ec0cc69f46dec24ab011c4f9eb8e8cf, type: 3}
-  describtion: "\u4F20\u9001\u5230\u5C0F\u8F66\u65C1\u8FB9"
+  describtion: "\u4F20\u9001\u5230\u5C0F\u8F66\u65C1\u8FB9\uFF08\u6309\u6570\u5B57\u952E1\u4F7F\u7528\uFF09"
