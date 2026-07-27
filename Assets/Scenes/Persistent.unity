@@ -531,6 +531,13 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c83f84ef1d0c44a46ba05f59225905c7, type: 3}
+    mixerGroup: {fileID: 7073054640990903247, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
+    audioType: 1
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+    audioSource: {fileID: 0}
   mixer: {fileID: 24100000, guid: 1d1c448ba325d604b850c500b200d728, type: 2}
 --- !u!1 &1908840481
 GameObject:

@@ -13,6 +13,11 @@ public class GameUIPanel : BasePanel
             AudioManager.Instance.PlayAudio("button");
             UIManager.Instance.ShowPanel<TeachUIPanel>("TeachUIPanel",E_UI_Canvas.Dynamic,E_UI_Layer.System);
         });
+        UIManager.AddCustomEventListener(GetControl<Image>("SettingIcon"), EventTriggerType.PointerClick, (panel) =>
+        {
+            AudioManager.Instance.PlayAudio("button");
+            GameManager.Instance.BackToMenu();
+        });
     }
 
     private void Update()

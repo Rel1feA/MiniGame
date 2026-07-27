@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RECode.REFramework;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -45,6 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         LoadSceneManager.Instance.LoadSceneAsync(1, null, (value) =>
         {
+            remainingTime = 90;
             UIManager.Instance.HidePanel("StartGamePanel");
             UIManager.Instance.ShowPanel<GameUIPanel>("GameUIPanel",E_UI_Canvas.Static);
         });
@@ -58,7 +60,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void BackToMenu()
     {
-        
+        LoadSceneManager.Instance.LoadSceneAsync(2);
+        UIManager.Instance.ShowPanel<StartGamePanel>("StartGamePanel",E_UI_Canvas.Dynamic);
+        UIManager.Instance.HidePanel("GameUIPanel");
     }
 
     public void NextLevel()

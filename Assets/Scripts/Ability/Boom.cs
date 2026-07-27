@@ -10,13 +10,21 @@ public class Boom : MonoBehaviour
     [SerializeField]
     private GameObject prefab;
 
-    private float timer;
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            Use();
+        }
+    }
 
+    public void Use()
+    {
+        if(count>0)
+        {
+            GameObject obj = Instantiate(prefab);
+            obj.transform.position = transform.position;
+            count--;
         }
     }
 }

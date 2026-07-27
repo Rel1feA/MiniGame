@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 7
   minSleepTime: 1
-  maxSleepTime: 3
+  maxSleepTime: 2
   deadDistance: 10
   loseScore: 15
 --- !u!58 &1605387453985777042
