@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RECode.REFramework;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -198,6 +199,7 @@ public class Player : MonoBehaviour
         if(currentBlock == null) return;
         currentBlock.Knocked(damage);
         AudioManager.Instance.PlayAudio("gravel1");
+        VibrateController(0.5f, 0.8f, 0.1f);
         currentBlock = null;
     }
 
@@ -222,5 +224,42 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position+(Vector3)digRayOffset, faceDir * digDistance);
+    }
+
+    public void VibrateController(float lowFreq, float highFreq, float duration)
+    {
+        StartCoroutine(VibrateCoroutine(lowFreq, highFreq, duration));
+    }
+
+    IEnumerator VibrateCoroutine(float lowFreq, float highFreq, float duration)
+    {
+        Gamepad gamepad = Gamepad.current;
+
+        // 1. 检查手柄是否连接
+        if (gamepad == null)
+        {
+            Debug.LogWarning("没有检测到手柄，无法震动");
+            yield break;
+        }
+
+        // 2. 开始震动
+        gamepad.SetMotorSpeeds(lowFreq, highFreq);
+        Debug.Log($"手柄开始震动，强度: {lowFreq}/{highFreq}");
+
+        // 3. 等待指定的持续时间
+        yield return new WaitForSeconds(duration);
+
+        // 4. 停止震动
+        gamepad.SetMotorSpeeds(0f, 0f);
+        Debug.Log("手柄震动已停止");
+    }
+
+    // 立即停止震动的辅助方法
+    public void StopVibration()
+    {
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0f, 0f);
+        }
     }
 }
