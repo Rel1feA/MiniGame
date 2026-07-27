@@ -1,12 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RECode.REFramework;
+锘縰sing RECode.REFramework;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+
 
 public class GameUIPanel : BasePanel
 {
+    private void Start()
+    {
+        UIManager.AddCustomEventListener(GetControl<Image>("TeachIcon"), EventTriggerType.PointerClick, (panel) =>
+        {
+            UIManager.Instance.ShowPanel<TeachUIPanel>("TeachUIPanel",E_UI_Canvas.Dynamic,E_UI_Layer.System);
+        });
+    }
+
     private void Update()
     {
         UpdateUI();
@@ -14,8 +21,10 @@ public class GameUIPanel : BasePanel
 
     public void UpdateUI()
     {
-        GetControl<Text>("RemainTime").text =$"剩余时间{GameManager.Instance.RemainTime}";
-        GetControl<Text>("CurrentScore").text=$"当前分数{GameManager.Instance.score}";
-        GetControl<Text>("TargetScore").text = $"目标分数{GameManager.Instance.currentLevelData.targetScore}";
+        GetControl<Text>("RemainTime").text =$"鍓╀綑鏃堕棿:{GameManager.Instance.RemainTime}";
+        GetControl<Text>("CurrentScore").text=$"褰撳墠鍒嗘暟:{GameManager.Instance.score}";
+        GetControl<Text>("TargetScore").text = $"鐩爣鍒嗘暟:{GameManager.Instance.currentLevelData.targetScore}";
+        GetControl<Text>("DigSpeedMul").text = $"鎸栨帢閫熷害鍔犳垚:{GameManager.Instance.player.DigSpeedMul * 100:F0}%";
+        GetControl<Text>("FlySpeedMul").text = $"椋炶閫熷害鍔犳垚:{GameManager.Instance.player.Movement.FlySpeedMul * 100:F0}%";
     }
 }

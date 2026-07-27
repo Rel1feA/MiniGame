@@ -5,20 +5,27 @@ using UnityEngine;
 public class Translate : MonoBehaviour
 {
     private Player player;
+    public int count;
     [SerializeField]
     private Transform targetPos;
 
     public void Init(Player player)
     {
-        this.player= player;
+        this.player = player;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            player.transform.position=targetPos.position;
-            Destroy(this);
+            Use();
         }
+    }
+
+    public void Use()
+    {
+        if (count <= 0) return;
+        player.transform.position = targetPos.position;
+        count--;
     }
 }

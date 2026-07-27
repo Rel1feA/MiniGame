@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecac9985f2f059e4d9d5b601e5716e1e, type: 3}
   m_Name: DigUp
   m_EditorClassIdentifier: 
-  id: 1
-  abilityName: "\u6316\u6398\u901F\u5EA6\u63D0\u5347"
-  abilityClassName: 
+  id: 2
+  abilityTitleName: "\u8D85\u7EA7\u6316\u6398"
   icon: {fileID: 306720969, guid: 4ec0cc69f46dec24ab011c4f9eb8e8cf, type: 3}
-  cooldown: -1
-  duration: -1
+  describtion: "\u6316\u6398\u901F\u5EA6+50%"

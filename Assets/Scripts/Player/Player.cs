@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private PlayMovement movement;
     private SpriteRenderer spriteRenderer;
     private float timer;
+    private float digSpeedMul=1;
 
     public P_MoveState moveState;
     public P_AirState airState;
@@ -43,6 +44,8 @@ public class Player : MonoBehaviour
     public float HideCoolTime { get { return hideCoolTime; } }
     public SpriteRenderer PickaxeSprite { get { return pickAxeSprite; } }
 
+    public float DigSpeedMul { get { return digSpeedMul; } }
+
 
     private void Awake()
     {
@@ -58,16 +61,19 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         EventCenter.Instance.AddListener<Bat>("BatAlive", OnBatAlive);
+        EventCenter.Instance.AddListener("RestartGame", ResetPlayer);
     }
 
     private void OnDisable()
     {
-        EventCenter.Instance.AddListener<Bat>("BatAlive", OnBatAlive);
+        EventCenter.Instance.RemoveListener<Bat>("BatAlive", OnBatAlive);
+        EventCenter.Instance.RemoveListener("RestartGame", ResetPlayer);
     }
 
     private void Start()
     {
         ResetPlayer();
+        GameManager.Instance.player = this;
     }
 
     private void Update()
@@ -131,10 +137,17 @@ public class Player : MonoBehaviour
 
     public void ResetPlayer()
     {
-        faceDir = Vector2.down;
+        faceDir = Vector2.right;
         currentState = moveState;
         currentState.EnterState(this);
         timer = 3.5f;
+        transform.position = Vector3.zero;
+    }
+
+    public void AddDigSpeedMul(float value)
+    {
+        digSpeedMul+= value;
+        animator.SetFloat("DigMul", digSpeedMul);
     }
 
     private void CheckBlock()

@@ -4,9 +4,8 @@ using UnityEngine;
 public class AbilityData : ScriptableObject
 {
     public int id;
-    public string abilityName;               
-    public string abilityClassName;          
+    public string abilityTitleName;                 
     public Sprite icon;
-    public float cooldown;
-    public float duration;
+    [TextArea]
+    public string describtion;
 }

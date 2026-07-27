@@ -130,7 +130,7 @@ MonoBehaviour:
   chaseSpeed: 7
   minSleepTime: 1
   maxSleepTime: 3
-  deadDistance: 15
+  deadDistance: 10
   loseScore: 15
 --- !u!58 &1605387453985777042
 CircleCollider2D:

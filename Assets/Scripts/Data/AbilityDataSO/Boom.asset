@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecac9985f2f059e4d9d5b601e5716e1e, type: 3}
-  m_Name: Translate
+  m_Name: Boom
   m_EditorClassIdentifier: 
-  id: 5
-  abilityTitleName: "\u4F20\u9001\u95E8"
-  icon: {fileID: -1745855569, guid: 4ec0cc69f46dec24ab011c4f9eb8e8cf, type: 3}
-  describtion: "\u4F20\u9001\u5230\u5C0F\u8F66\u65C1\u8FB9"
+  id: 3
+  abilityTitleName: "\u70B8\u5F39"
+  icon: {fileID: -774789897, guid: 4ec0cc69f46dec24ab011c4f9eb8e8cf, type: 3}
+  describtion: "\u70B8\u5F005x5\u8303\u56F4\u7684\u5730\u5757"

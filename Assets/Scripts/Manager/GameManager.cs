@@ -11,6 +11,7 @@ public class GameManager : MonoSingleton<GameManager>
     public LevelData currentLevelData;
     [SerializeField]
     private GameData gameData;
+    public Player player;
 
     public int RemainTime { get { return (int)remainingTime; } }
 
@@ -53,7 +54,8 @@ public class GameManager : MonoSingleton<GameManager>
     public void NextLevel()
     {
         currentLevelIndex++;
-        currentLevelData= GetLevelData(currentLevelIndex);
+        score -= currentLevelData.targetScore;
+        currentLevelData = GetLevelData(currentLevelIndex);
         EventCenter.Instance.EventTrigger("NextLevel", currentLevelData);
         remainingTime = gameData.levelTime;
     }
@@ -61,12 +63,31 @@ public class GameManager : MonoSingleton<GameManager>
     public void SettleGame()
     {
         if (score < currentLevelData.targetScore) return;
-        NextLevel();
+        AbilitySystem.Instance.GenerateStore(3);
+    }
+
+    public void PauseGame()
+    {
+
+    }
+
+    public void ResumeGame()
+    {
+
     }
 
     public void GameOver()
     {
+        Time.timeScale = 0;
+        UIManager.Instance.ShowPanel<GameOverPanel>("GameOverPanel",E_UI_Canvas.Dynamic);
+    }
 
+    public void ReStartGame()
+    {
+        Time.timeScale = 1;
+        UIManager.Instance.HidePanel("GameOverPanel");
+        remainingTime = gameData.levelTime;
+        EventCenter.Instance.EventTrigger("RestartGame");
     }
 
     public void QuitGame()
