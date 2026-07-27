@@ -56,6 +56,11 @@ public class GameManager : MonoSingleton<GameManager>
         return null;
     }
 
+    public void BackToMenu()
+    {
+        
+    }
+
     public void NextLevel()
     {
         isCoolTimer= false;
